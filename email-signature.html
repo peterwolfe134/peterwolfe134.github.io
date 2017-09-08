@@ -1,31 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
 
-  <style type="text/css">
-@import "compass/css3";
+html {
+  line-height: 1;
+}
 
-// Compass!
-@import "compass/reset";
-@import "compass/css3/animation";
-@import "compass/css3/appearance";
-@import "compass/css3/transition";
+ol, ul {
+  list-style: none;
+}
 
-// Robot from Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
-// Background and foreground colors
-$bg-color: #2196F3;
-$fg-color: darken($bg-color,7%);
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
 
-// Penner easing equation via http://matthewlein.com/ceaser/
-$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
 
 body {
   font-family: Roboto, sans-serif;
-  background: $bg-color;
+  background: #2196F3;
   font-size: 16pt;
-  color: lighten($bg-color,15%);
+  color: #6ab8f7;
   font-weight: 200;
   padding: 2em;
 }
@@ -36,26 +71,28 @@ body {
 }
 
 main {
-  @include transform(translateX(-50%));
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   position: relative;
   display: inline-block;
   left: 50%;
-  
-  header {
-    color: #fff;
-    text-align: center;
-    margin: 1em;
-    h1 {
-      font-size: 1.25em;
-      margin: 0.25em;
-    }
-    a {
-      color: lighten($bg-color,15%);
-      text-decoration: none;
-    }
-  }
 }
-  
+main header {
+  color: #fff;
+  text-align: center;
+  margin: 1em;
+}
+main header h1 {
+  font-size: 1.25em;
+  margin: 0.25em;
+}
+main header a {
+  color: #6ab8f7;
+  text-decoration: none;
+}
+
 .button {
   position: relative;
   margin: 1em;
@@ -68,25 +105,27 @@ main {
   position: relative;
   z-index: 0;
   cursor: pointer;
-  
-  &.raised {
-    @include transition(0.1s all);
-    background: $fg-color;
-    box-shadow: 0px 1px 1px darken($fg-color,15%);
-    &:active {
-      background: darken($fg-color,2.5%);
-      box-shadow: 0px 1px 1px darken($fg-color,25%);
-    }
-  }
 }
-
+.button.raised {
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background: #0c84e4;
+  box-shadow: 0px 1px 1px #085a9b;
+}
+.button.raised:active {
+  background: #0c7dd8;
+  box-shadow: 0px 1px 1px #063e6b;
+}
 
 span {
   font-weight: 400;
 }
 
 input[type="checkbox"].toggle {
-  @include appearance(none);
+  -moz-appearance: none;
+  -webkit-appearance: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -94,98 +133,220 @@ input[type="checkbox"].toggle {
   left: 0;
   top: 0;
   cursor: pointer;
-  
-  &:focus {
-    outline: 0; // Get rid of Chrome's ugly outline on focus
-  }
+}
+input[type="checkbox"].toggle:focus {
+  outline: 0;
 }
 
 .anim {
-  @include transform(translateY(-50%) translateX(-50%));
+  -moz-transform: translateY(-50%) translateX(-50%);
+  -ms-transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: -1;
-
-  // The ':before' psuedo element is a spacing ghost to make the 
-  // ':after' psuedo element a square, with width & height 
-  // automatically equal to the parent's width.
-  &:before {
-    position: relative;
-    content: '';
-    display: block;
-    margin-top: 100%;
-  }
-  
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom:0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-  }
+}
+.anim:before {
+  position: relative;
+  content: '';
+  display: block;
+  margin-top: 100%;
+}
+.anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
 }
 
-.clickable {
-  .toggle:checked + .anim {
-    @include animation(anim-in 0.75s);
-    &:after { @include animation(anim-in-pseudo 0.75s); }
-  }
-
-  .toggle:not(:checked) + .anim {
-    @include animation(anim-out 0.75s);
-    &:after { @include animation(anim-out-pseudo 0.75s); }
-  }  
+.clickable .toggle:checked + .anim {
+  -moz-animation: anim-in 0.75s;
+  -webkit-animation: anim-in 0.75s;
+  animation: anim-in 0.75s;
+}
+.clickable .toggle:checked + .anim:after {
+  -moz-animation: anim-in-pseudo 0.75s;
+  -webkit-animation: anim-in-pseudo 0.75s;
+  animation: anim-in-pseudo 0.75s;
+}
+.clickable .toggle:not(:checked) + .anim {
+  -moz-animation: anim-out 0.75s;
+  -webkit-animation: anim-out 0.75s;
+  animation: anim-out 0.75s;
+}
+.clickable .toggle:not(:checked) + .anim:after {
+  -moz-animation: anim-out-pseudo 0.75s;
+  -webkit-animation: anim-out-pseudo 0.75s;
+  animation: anim-out-pseudo 0.75s;
 }
 
 .hoverable:hover > .anim {
-  @include animation(anim-out 0.75s);
-  &:after { @include animation(anim-out-pseudo 0.75s); }
+  -moz-animation: anim-out 0.75s;
+  -webkit-animation: anim-out 0.75s;
+  animation: anim-out 0.75s;
+}
+.hoverable:hover > .anim:after {
+  -moz-animation: anim-out-pseudo 0.75s;
+  -webkit-animation: anim-out-pseudo 0.75s;
+  animation: anim-out-pseudo 0.75s;
 }
 
-// Keyframes mixin
-@mixin keyframes($name) {
-	@-webkit-keyframes #{$name} {
-		@content; 
-	}
-	@-moz-keyframes #{$name} {
-		@content;
-	}
-	@-ms-keyframes #{$name} {
-		@content;
-	}
-	@keyframes #{$name} {
-		@content;
-	} 
+@-webkit-keyframes anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
-@include keyframes(anim-in) {
-  0% { width: 0%; }
-  100% { width: 100%; }
+@-moz-keyframes anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
-@include keyframes(anim-in-pseudo) {
-  0% { background: rgba(#000,0.25); }
-  100% { background: rgba(#000,0); }
+@-ms-keyframes anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
-@include keyframes(anim-out) {
-  0% { width: 0%; }
-  100% { width: 100%; }
+@keyframes anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
-@include keyframes(anim-out-pseudo) {
-  0% { background: rgba(#000,0.25); }
-  100% { background: rgba(#000,0); }
+@-webkit-keyframes anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
 }
+@-moz-keyframes anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@-ms-keyframes anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@keyframes anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@-webkit-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-ms-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@-moz-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@-ms-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+</style>
 
 
-
-  </style>
-</head>
-    <body>
-        
-    </body>
-</html>
+<main>
+  <header>
+    <h1>"Material Design" Animated Buttons</h1><a href="twitter.com/jonbrennecke">by @jonbrennecke</a>
+  </header>
+  <section class="col">
+    <div class="button clickable">
+      <input class="toggle" type="checkbox"/>
+      <div class="anim"></div><span>Click!</span>
+    </div>
+    <div class="button hoverable">
+      <div class="anim"></div><span>Hover!</span>
+    </div>
+  </section>
+  <section class="col">
+    <div class="button raised clickable">
+      <input class="toggle" type="checkbox"/>
+      <div class="anim"></div><span>Click!</span>
+    </div>
+    <div class="button raised hoverable">
+      <div class="anim"></div><span>Hover!</span>
+    </div>
+  </section>
+</main>
