@@ -1,0 +1,47 @@
+body{
+	background: url("https://wallpaperscraft.com/image/black_background_lines_scratches_69440_3840x2400.jpg");
+	background-position: contain
+	background-size: cover;
+	color: #488cf2;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	text-shadow: 0px 0px 50px white;
+	text-align: center;
+	font-size: 12px;
+}
+h1{
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-size: 65px;
+	border-style: dashed dotted dashed dotted;
+}
+h3{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+}
+h4{
+	font-size: 20px;
+	color: white;
+}
+h5{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	font-size: 10px;
+	color: red;
+}
+.button {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 400;
+    background-color: #488cf2;
+    border: 5px groove #488cf2;
+    color: white;
+    text-shadow: 0px 0px 50px white;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+<!-- Copyright: Super evil corporation that wants your money, 2016 -->
+<!-- (all rights reserved) -->

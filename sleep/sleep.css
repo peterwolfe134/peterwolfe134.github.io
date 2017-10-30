@@ -1,0 +1,77 @@
+body{
+	background-color: black;
+	color: white;
+	font-family: 'Abhaya Libre', serif;
+	font-weight: 300;
+	text-align: center;
+	font-size: 100px;
+	-webkit-animation-name: whiteblack; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+    animation-name: whiteblack;
+    animation-duration: 10s;
+	}
+.button {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 400;
+    background-color: red;
+    border: 5px groove red;
+    color: white;
+    text-shadow: 0px 0px 50px white;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    left: 0px;
+}
+h1{
+	-webkit-animation-name: zzz; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 15s; /* Safari 4.0 - 8.0 */
+    animation-name: zzz1, zzz2;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    position: relative;
+    color: white;
+    animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes whiteblack {
+    from {background-color: white; color: white;}
+    to {background-color: black; color: black;}
+}
+/* Standard syntax */
+@keyframes whiteblack {
+    0% {background-color: white;}
+    50% {background-color: black; color: black;}
+    100% {color: white;}
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes zzz1 {
+    0% {left: 100px;}
+	25% {left: -100px;}
+	50% {left: 100px;}
+	75% {left: -100px; color: white;}
+	100% {left: 100px; color: black;}
+    }
+@-webkit-keyframes zzz2 {
+    0% {top: 500px;}
+    100% {top: -200px;}
+}
+/* Standard syntax */
+@keyframes zzz1 {
+    0% {left: 100px;}
+	25% {left: -100px;}
+	50% {left: 100px;}
+	75% {left: -100px; color: white;}
+	100% {left: 100px; color: black;}
+    }
+keyframes zzz2 {
+    0% {top: 500px;}
+    50% {top: 150px;}
+    100% {top: -200px;}
+}
+
+<!-- Copyright: Super evil corporation that wants your money, 2016 -->
+<!-- (all rights reserved) -->
